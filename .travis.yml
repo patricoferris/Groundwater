@@ -25,10 +25,10 @@ android:
 
 # Licenses that need accepting
 licenses:
-- 'android-sdk-preview-license-.+'
-- 'android-sdk-license-.+'
-- 'google-gdk-license-.+'
+  - android-sdk-preview-license-.+
+  - android-sdk-license-.+
+  - google-gdk-license-.+
 
 # Use gradle for builds
 script:
-- ./gradlew build check
+  - ./gradlew build check
