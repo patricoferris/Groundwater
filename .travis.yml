@@ -1,1 +1,34 @@
-language: java
+language: android
+
+jdk:
+- oraclejdk8
+
+# Global variables
+env:
+  global:
+  - ANDROID_SDK_VERISON=28
+  - ANDROID_BUILD_TOOLS_VERSION=25.0.2
+
+android:
+  components:
+  # Build tools
+  - tools
+  - platform-tools
+  - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+
+  # Android SDK Version
+  - android-$ANDROID_SDK_VERISON
+
+  # System Images for running emulation
+  - sys-img-x86-android-26
+  - sys-img-armeabi-v7a-android-17
+
+# Licenses that need accepting
+licenses:
+- 'android-sdk-preview-license-.+'
+- 'android-sdk-license-.+'
+- 'google-gdk-license-.+'
+
+# Use gradle for builds
+script:
+- ./gradlew build check
