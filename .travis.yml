@@ -23,6 +23,16 @@ android:
   - sys-img-x86-android-26
   - sys-img-armeabi-v7a-android-17
 
+# Caching for better build times
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
 # Licenses that need accepting
 licenses:
   - android-sdk-preview-license-.+
@@ -37,4 +47,4 @@ before_install:
 
 # Use gradle for builds
 script:
-  - ./gradlew build check
+  - ./gradlew build check --stacktrace
